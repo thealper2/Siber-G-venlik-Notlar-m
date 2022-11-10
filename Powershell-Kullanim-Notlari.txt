@@ -1,0 +1,153 @@
+* Get-Command =
+Get-Command -Verb Azure
+Get-Command | Group-Object module
+Get-Command | Sort-Object Source
+Get-Command | Sort-Object Source -Descending
+(Get-Command).count
+
+* Get-Help = 
+Get-Help Get-Command -Examples
+Get-Help Get-Command -Full
+Get-Help Get-Command -Online | Save-Help
+Get-Command -?
+Update-Help
+
+* Get-Alias = 
+Get-Alias -Definition Get-Command
+New-Alias -Name alias_name Get-Date
+Remove-Item alias::alias_name
+cd alias:
+
+* Get-Member = 
+Get-Command | Get-Member
+Get-Member -InputType Get-Process
+
+* Get-Location =
+
+* Set-Location = 
+Set-Location C:\Windows
+
+* Push-Location (pushd) = İçinde bulunduğu konumu bir takma ad ile saklar.
+Push-Location -StackName takma_ad
+
+* Pop-Location (popd) = Takma ad ile saklanan konuma geri döner.
+Pop-Location -StackName takma_ad
+
+* Write-Host = Ekrana data yazdırma
+Write-Host "Kelime"
+Write-Host "Alper Karaca" -ForegroundColor White -BackgroundColor Red
+
+* Read-Host = Girdi alma
+$user = Read-Host "Username: "
+$pass = Read-Host "Password: " -AsSecureString
+
+* Format-Table
+Get-Service | Format-Table
+Get-Service | Format-Table -Wrap
+Get-Service | Format-Table -AutoSize
+Get-Service | Format-Table -HideTableHeaders
+
+* Format-List
+Get-Service | Format-List
+Get-Service | Format-List -Column 5
+get-Service | Format-List -AutoSize
+
+* Start-Service
+Get-Service service_name | Start-Service
+
+* Stop-Service
+Get-Service service_name | Stop-Service
+
+* Get-Date = Tarih bilgisini yazar
+
+* Set-Date = Tarihi değiştirir
+Set-Date -Date 01/01/1970
+
+* Get-Clipboard = Belleğe kopyalanan veriyi ekrana basar.
+
+* Set-Clipboard = Belleğe veri kopyalar.
+Set-Clipboard "Alper"
+Set-Clipboard -Append "Karaca"
+Set-Clipboard -Path C:\user.txt
+
+* Out-File = Bir komutun çıktısını bir dosyaya yazdırma
+Get-Date | Out-File C:\date.txt
+
+* Out-GridView = Çıktıyı terminalde değil, harici bir pencerede açar.
+Get-Service | Out-GridView
+
+* Out-Printer = Çıktıyı yazıcıya yönlendirir.
+
+* Out-String = Çıktıyı bir değişkene atamaya yarar.
+
+* Get-Process 
+* Start-Process
+* Stop-Process
+
+* Get-EventLog = Sistemdeki event loglari gösterir.
+
+* Get-ComputerInfo = Bilgisayar Hakkında bilgiler
+
+* Get-Content = Metin dosyasının içeriğini okur.
+Get-Content C:\user.txt -Head 3
+Get-Content C:\user.txt -Tail 4
+Get-Content C:\user.txt -TotalCount 10
+Get-Content C:\user.txt -Delimiter ","
+
+* Set-Content = Metin dosyasına yazdırma, tüm içeriği siler.
+Set-Content C:\user.txt -Value "new_value"
+Set-Content C:\user.txt -Value "new_value1","new_value2" -NoNewline
+
+* Add-Content = Metin dosyasına yazdırma, içeriği silmez.
+Add-Content C:\user.txt -Value "new_value3"
+
+* Where-Object = Filtreleme
+Get-Service | Where-Object {$._status -eq "Running"}
+Get-Service | Where-Object {$._name -like "t*"}
+Get-Process | Where-Object {$._PM -gt 500MB}
+
+* Get-ChildItem = Arama
+Get-ChildItem C:\ -Recurse
+Get-ChildItem C:\ -Depth 2
+Get-ChildItem C:\ -Attributes Compressed -Recurse
+Attributes = [ ReadOnly, Hidden, Compressed, Normal, Temporary... ]
+
+* ConvertTo-Html
+Get-Service | ConvertTo-Html -Head "Services List" | Out-File C:\services.html
+
+* Invoke-Item = Belirtilen öğede varsayılan işlemi gerçekleştirir.
+
+* ConvertTo-Csv
+
+* Compress-Archive = Zip formatında sıkıştırma
+Compress-Archive -Path C:\user.txt -DestinationPath C:\user.zip
+
+* Expand-Archive = Zip formatında sıkıştırılan dosyayı açma
+Expand-Archive -Path C:\user.zip -DestionationPath C:\user
+
+* Measure-Object
+Get-Content C:\user.txt | Measure-Object -Character -Line -Word
+Get-Process | Measure-Object PM -Minimum -Maximum -Average
+
+* Get-History = Komut geçmişi
+
+* Clear-History = Komut geçmişini siler
+
+* Start-Transcript = Powershell günlük kaydını başlatır.
+
+* Stop-Transcript = Powershell günlük kaydını sonlandırır.
+
+* Get-Acl = Erisim haklari
+Get-Acl C:\test.txt
+
+Get-Module -ListAvailable
+Import-Module
+Get-Verb
+Get-PSDrive = Tüm sürücüler
+Get-Service | export-csv services.csv
+Get-Service | export-clixml services.xml
+Compare-Object -ReferenceObject (import-clixml services.xml) -DifferenceObject (Get-Process)
+Get-PSSnapin -Registered
+Add-PSSnapin
+Get-ExecutionPolicy
+Set-ExecutionPolicy

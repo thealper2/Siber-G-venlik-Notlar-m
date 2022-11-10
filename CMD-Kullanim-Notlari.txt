@@ -1,0 +1,131 @@
+* cd = Dizine geçiş yap.
+
+* mkdir = Dizin oluştur.
+
+* ren = Yeniden adlandır.
+
+* echo = Veri yazdır.
+echo test > test.txt
+echo test >> test.txt
+
+* copy = Dosya kopyalama
+copy test.txt Desktop
+
+* del = Dosya silme
+del test.txt
+
+* move = Dosya taşıma
+move test.txt Desktop
+
+* rmdir = Dizin silme
+
+* tasklist = Gorev listesi
+
+notepad
+mspaint
+calc
+
+* taskkill = Gorev sonlandir.
+taskkilll /pid 1234
+taskkkill /im notepad.exe
+
+* net start = Hizmet başlatma
+net start "Windows Firewall"
+
+* net stop = Hizmet Durdurma
+net stop "Windows Firewall" 
+
+* driverquery =
+
+* wmic=
+wmic
+cpu
+/output:D:\test.txt product get name, version
+
+* diskpart =
+diskpart
+list disk
+select disk 1
+detail disk
+
+* vol =
+vol D:
+
+* chkdsk =
+
+* getmac = 
+
+* systeminfo = 
+
+* lsurmgr.msc = 
+
+* net user user_name /add user_pass
+
+* net user user_name /del
+
+* net user administrator /active:yes
+
+* net user user_name *
+
+* attrib +h +r +s = Dizin gizleme
+* attrib -h -r -s = Dizin gosterme
+
+* cipher /e
+* cipher /d
+* cipher /c
+* cipher /rekey
+
+* assoc = 
+assoc.jpg
+
+* copy con test.txt = EOF olana kadar alınan verileri dosyaya yazar
+
+* type = Dosya okuma
+type test.txt
+
+* type nul> a.txt = dosya olusturma
+
+* ipconfig
+
+* netsh wlan show interfaces
+* netsh wlan show all
+* netsh wlan show profile profile_name key-clear
+* netsh wlan set netowork_name mode=allow ssid=ssid_name key=ssid_pass
+* netsh wlan start network_name
+
+* hostname
+
+* arp -a
+
+* ping url_address
+
+* tracert url_address
+
+* netstat
+
+* nslookup url_address
+
+* tree C:
+
+* doskey/history = komut geçmişi
+
+* shutdown
+shutdown -s -t 10
+shutdpwn -r -t 10
+
+-CMD Customization-
+color a = Yazi rengi
+title title_name = Pencere ismi
+mode 120 = Pencere boyutu
+prompt root>
+
+-USB Biçimlendirme-
+diskpart
+list disk
+select disk X
+clean
+create partition primary
+select partition 1
+format fs=ntfs quick
+active
+assign
